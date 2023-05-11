@@ -33,5 +33,5 @@ jobs:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
           cd ./docker
-          docker-compose build
-          docker-compose push
+          docker-compose.yml build
+          docker-compose.yml push
