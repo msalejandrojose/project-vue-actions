@@ -34,4 +34,5 @@ jobs:
         run: |
           cd ./docker
           docker-compose build
+          docker tag docker-boserver:latest docker-boserver:latest
           docker-compose push
