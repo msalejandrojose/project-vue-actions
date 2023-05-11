@@ -1,0 +1,30 @@
+version: '3'
+services:
+  # Backoffice server
+  boserver:
+    build:
+      context: ./bo-server/
+      dockerfile: Dockerfile
+      args:
+        - mode
+        - project_id
+    container_name: boserver
+    restart: unless-stopped
+    tty: true
+    environment:
+      - PROJECT_ID=${PROJECT_ID}
+      - ENV=${ENV}
+      - BO_URL=${BO_URL}
+    ports:
+      - "80:80"
+    volumes:
+      - ../.env:/.env
+      - ..:/usr/share/nginx/project
+    networks:
+      - app-network
+
+# Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
